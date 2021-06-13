@@ -1,0 +1,22 @@
+/* ./styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #__next {
+  height: 100%;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  transition: color, background-color .2s;
+}
+
+[placeholder]:empty::before {
+  content: attr(placeholder);
+  color: #a9a9a9;
+}
+
+[placeholder]:not(:empty)::before {
+  content: "";
+}
