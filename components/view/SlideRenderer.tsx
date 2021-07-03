@@ -7,9 +7,7 @@ import useStep from '~/hooks/useStep';
 type Slide = React.ReactNode[];
 const stepToX = (x: number) => (x ? `-${x}00vw` : '0vw');
 
-export default function SlideRenderer(
-  props: React.PropsWithChildren<{ draggable?: boolean }>,
-) {
+export default function SlideRenderer(props: React.PropsWithChildren<{}>) {
   const slides = useMemo(() => {
     return React.Children.toArray(props.children).reduce<Slide[]>(
       (prev, child) => {
@@ -38,9 +36,7 @@ export default function SlideRenderer(
         move(mx < 0 ? 1 : -1);
       }
     },
-    {
-      filterTaps: true,
-    },
+    { filterTaps: true },
   );
 
   useSlideKeyboard({
@@ -54,11 +50,11 @@ export default function SlideRenderer(
         {...bind()}
         suppressHydrationWarning
         style={style}
-        className="flex-1 text-gray-800 dark:text-gray-100 w-full flex flex-nowrap select-none">
+        className="flex-1 text-gray-800 dark:text-gray-100 flex flex-nowrap select-none">
         {slides.map((slide, index) => (
           <div
             key={index}
-            className="relative grid flex-col content-center justify-items-center gap-8 w-full flex-shrink-0 h-full">
+            className="relative grid flex-col content-center justify-items-center gap-8 w-screen flex-shrink-0 h-full">
             {slide}
           </div>
         ))}
